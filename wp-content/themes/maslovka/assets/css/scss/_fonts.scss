@@ -1,0 +1,101 @@
+@font-face {
+	font-family: "Graphik Regular";
+	src:
+		url("../fonts/graphikLCG/Graphik-Regular-Web.woff2") format("woff2"),
+		url("../fonts/graphikLCG/Graphik-Regular-Web.woff") format("woff"),
+		url("../fonts/graphikLCG/Graphik-Regular-Web.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Kazimir Regular";
+	src:
+		url("../fonts/kazimir/Kazimir-Regular-Web.woff2") format("woff2"),
+		url("../fonts/kazimir/Kazimir-Regular-Web.woff") format("woff"),
+		url("../fonts/kazimir/Kazimir-Regular-Web.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+$fonts: (
+	kazimir-88: (
+		family: "Kazimir Regular",
+		size: 88px,
+		line-height: 84px,
+		letter-spacing: -0.02em
+	),
+	kazimir-56: (
+		family: "Kazimir Regular",
+		size: 56px,
+		line-height: 64px,
+		letter-spacing: -0.01em
+	),
+	kazimir-34: (
+		family: "Kazimir Regular",
+		size: 34px,
+		line-height: 38px,
+		letter-spacing: -0.01em
+	),
+	kazimir-31: (
+		family: "Kazimir Regular",
+		size: 31px,
+		line-height: 36px,
+		letter-spacing: -0.01em
+	),
+	kazimir-28: (
+		family: "Kazimir Regular",
+		size: 28px,
+		line-height: 34px,
+		letter-spacing: 0
+	),
+	kazimir-24: (
+		family: "Kazimir Regular",
+		size: 24px,
+		line-height: 28px,
+		letter-spacing: 0
+	),
+	graphik-32: (
+		family: "Graphik Regular",
+		size: 32px,
+		line-height: 38px,
+		letter-spacing: -0.005em
+	),
+	graphik-21: (
+		family: "Graphik Regular",
+		size: 21px,
+		line-height: 30px,
+		letter-spacing: -0.005em
+	),
+	graphik-18: (
+		family: "Graphik Regular",
+		size: 18px,
+		line-height: 24px,
+		letter-spacing: -0.005em
+	),
+	graphik-16: (
+		family: "Graphik Regular",
+		size: 16px,
+		line-height: 22px,
+		letter-spacing: -0.005em
+	),
+	graphik-15: (
+		family: "Graphik Regular",
+		size: 15px,
+		line-height: 22px,
+		letter-spacing: 0
+	)
+);
+
+@mixin font-style($name) {
+	$font: map-get($fonts, $name);
+
+	@if $font {
+		font-family: map-get($font, family);
+		font-size: map-get($font, size);
+		line-height: map-get($font, line-height);
+		letter-spacing: map-get($font, letter-spacing);
+	} @else {
+		@warn "Font `#{$name}` not found in $fonts map.";
+	}
+}
